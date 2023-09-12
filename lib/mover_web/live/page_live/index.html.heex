@@ -26,14 +26,17 @@
   </div>
 </.nav>
 
+<div phx-hook="Map" id="map">
+  <%!-- <input id="location" type="text" class="my-4" /> --%>
+</div>
 <div class="w-[100%] h-[90vh] flex flex-col justify-center items-center">
   <h1>
     Welcome
   </h1>
 
   <img src="/images/logo.svg" class="w-[300px] h-[300px]" />
-  <.simple_form for={@form} id="quote-form" phx-change="validate" phx-submit="save">
-    <.input field={@form[:from]} type="text" label="From" />
+  <.simple_form for={@form} id="quote-form">
+    <.input id="location" field={@form[:from]} type="text" label="From" />
     <.input field={@form[:to]} type="text" label="To" />
     <.input field={@form[:bedroom_size]} type="number" label="Bedroom size" />
     <:actions>

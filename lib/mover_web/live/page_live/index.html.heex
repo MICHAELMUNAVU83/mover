@@ -35,7 +35,7 @@
   </h1>
 
   <img src="/images/logo.svg" class="w-[300px] h-[300px]" />
-  <.simple_form for={@form} id="quote-form">
+  <.simple_form for={@form} id="quote-form" phx-change="validate" phx-submit="save">
     <.input id="location" field={@form[:from]} type="text" label="From" />
     <.input field={@form[:to]} type="text" label="To" />
     <.input field={@form[:bedroom_size]} type="number" label="Bedroom size" />

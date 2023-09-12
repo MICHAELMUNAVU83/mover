@@ -1,0 +1,43 @@
+<div>
+  hey
+</div>
+
+<.nav>
+  <div>
+    Logo
+  </div>
+
+  <div class="flex justify-center items-center gap-4">
+    <p>
+      hey
+    </p>
+    <p>
+      hey
+    </p>
+    <p>
+      hey
+    </p>
+    <p>
+      hey
+    </p>
+  </div>
+  <div>
+    mama
+  </div>
+</.nav>
+
+<div class="w-[100%] h-[90vh] flex flex-col justify-center items-center">
+  <h1>
+    Welcome
+  </h1>
+
+  <img src="/images/logo.svg" class="w-[300px] h-[300px]" />
+  <.simple_form for={@form} id="quote-form" phx-change="validate" phx-submit="save">
+    <.input field={@form[:from]} type="text" label="From" />
+    <.input field={@form[:to]} type="text" label="To" />
+    <.input field={@form[:bedroom_size]} type="number" label="Bedroom size" />
+    <:actions>
+      <.button phx-disable-with="Saving...">Save Quote</.button>
+    </:actions>
+  </.simple_form>
+</div>

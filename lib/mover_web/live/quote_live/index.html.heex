@@ -1,0 +1,48 @@
+<.header>
+  Listing Quotes
+  <:actions>
+    <.link patch={~p"/quotes/new"}>
+      <.button>New Quote</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="quotes"
+  rows={@streams.quotes}
+  row_click={fn {_id, quote} -> JS.navigate(~p"/quotes/#{quote}") end}
+>
+  <:col :let={{_id, quote}} label="From"><%= quote.from %></:col>
+  <:col :let={{_id, quote}} label="To"><%= quote.to %></:col>
+  <:col :let={{_id, quote}} label="Bedroom size"><%= quote.bedroom_size %></:col>
+  <:action :let={{_id, quote}}>
+    <div class="sr-only">
+      <.link navigate={~p"/quotes/#{quote}"}>Show</.link>
+    </div>
+    <.link patch={~p"/quotes/#{quote}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, quote}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: quote.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="quote-modal"
+  show
+  on_cancel={JS.patch(~p"/quotes")}
+>
+  <.live_component
+    module={MoverWeb.QuoteLive.FormComponent}
+    id={@quote.id || :new}
+    title={@page_title}
+    action={@live_action}
+    quote={@quote}
+    patch={~p"/quotes"}
+  />
+</.modal>

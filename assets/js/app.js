@@ -35,6 +35,29 @@ let Hooks = {};
 
 Hooks.Map = {
   mounted() {
+    const input1 = document.getElementById("location1");
+    const input2 = document.getElementById("location2");
+
+    const options = {
+      types: ["(cities)"],
+      componentRestrictions: { country: "ke" },
+    };
+
+    autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+    autocomplete1.addListener("place_changed", () => {
+      console.log("place changed");
+      const place = autocomplete.getPlace();
+      console.log(place);
+    });
+
+    autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+    autocomplete2.addListener("place_changed", () => {
+      console.log("place changed");
+      const place = autocomplete.getPlace();
+      console.log(place);
+    });
+  },
+  updated() {
     const input = document.getElementById("location");
     const options = {
       types: ["(cities)"],

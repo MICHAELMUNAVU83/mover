@@ -1,8 +1,4 @@
-<div>
-  hey
-</div>
-
-<.nav>
+<%!-- <.nav>
   <div>
     Logo
   </div>
@@ -24,7 +20,7 @@
   <div>
     mama
   </div>
-</.nav>
+</.nav> --%>
 
 <div phx-hook="Map" id="map">
   <%!-- <input id="location" type="text" class="my-4" /> --%>
@@ -36,8 +32,8 @@
 
   <img src="/images/logo.svg" class="w-[300px] h-[300px]" />
   <.simple_form for={@form} id="quote-form" phx-change="validate" phx-submit="save">
-    <.input id="location" field={@form[:from]} type="text" label="From" />
-    <.input field={@form[:to]} type="text" label="To" />
+    <.input id="location1" field={@form[:from]} type="text" label="From" />
+    <.input id="location2" field={@form[:to]} type="text" label="To" />
     <.input field={@form[:bedroom_size]} type="number" label="Bedroom size" />
     <:actions>
       <.button phx-disable-with="Saving...">Save Quote</.button>

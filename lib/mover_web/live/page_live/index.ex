@@ -32,7 +32,7 @@ defmodule MoverWeb.PageLive.Index do
       from = [String.to_float(quote_params["latitude_from"]), String.to_float(quote_params["longitude_from"])]
       to = [String.to_float(quote_params["latitude_to"]), String.to_float(quote_params["longitude_to"])]
       distance = Geocalc.distance_between(from, to)
-      |> Geocalc.to_miles
+
 
       # convert to float from integer
 

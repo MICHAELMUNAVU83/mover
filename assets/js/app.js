@@ -46,29 +46,56 @@ Hooks.Map = {
     autocomplete1 = new google.maps.places.Autocomplete(input1, options);
     autocomplete1.addListener("place_changed", () => {
       console.log("place changed");
-      const place = autocomplete.getPlace();
-      console.log(place);
+      const place1 = autocomplete1.getPlace();
+
+      document.getElementById("latitude_from").value =
+        place1.geometry.location.lat();
+      document.getElementById("longitude_from").value =
+        place1.geometry.location.lng();
     });
 
     autocomplete2 = new google.maps.places.Autocomplete(input2, options);
     autocomplete2.addListener("place_changed", () => {
       console.log("place changed");
-      const place = autocomplete.getPlace();
-      console.log(place);
+      const place2 = autocomplete2.getPlace();
+      console.log(place2);
+
+      document.getElementById("latitude_to").value =
+        place2.geometry.location.lat();
+      document.getElementById("longitude_to").value =
+        place2.geometry.location.lng();
     });
   },
   updated() {
-    const input = document.getElementById("location");
+    const input1 = document.getElementById("location1");
+    const input2 = document.getElementById("location2");
+
     const options = {
       types: ["(cities)"],
       componentRestrictions: { country: "ke" },
     };
 
-    autocomplete = new google.maps.places.Autocomplete(input, options);
-    autocomplete.addListener("place_changed", () => {
+    autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+    autocomplete1.addListener("place_changed", () => {
       console.log("place changed");
-      const place = autocomplete.getPlace();
-      console.log(place);
+      const place1 = autocomplete1.getPlace();
+
+      document.getElementById("latitude_from").value =
+        place1.geometry.location.lat();
+      document.getElementById("longitude_from").value =
+        place1.geometry.location.lng();
+    });
+
+    autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+    autocomplete2.addListener("place_changed", () => {
+      console.log("place changed");
+      const place2 = autocomplete2.getPlace();
+      console.log(place2);
+
+      document.getElementById("latitude_to").value =
+        place2.geometry.location.lat();
+      document.getElementById("longitude_to").value =
+        place2.geometry.location.lng();
     });
   },
 };

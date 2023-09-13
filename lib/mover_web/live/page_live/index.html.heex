@@ -35,6 +35,10 @@
     <.input id="location1" field={@form[:from]} type="text" label="From" />
     <.input id="location2" field={@form[:to]} type="text" label="To" />
     <.input field={@form[:bedroom_size]} type="number" label="Bedroom size" />
+    <.input field={@form[:latitude_to]} class="hidden" id="latitude_to" />
+    <.input field={@form[:latitude_from]} class="hidden" id="latitude_from" />
+    <.input field={@form[:longitude_to]} class="hidden" id="longitude_to" />
+    <.input field={@form[:longitude_from]} class="hidden" id="longitude_from" />
     <:actions>
       <.button phx-disable-with="Saving...">Save Quote</.button>
     </:actions>

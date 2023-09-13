@@ -26,6 +26,22 @@ defmodule MoverWeb.PageLive.Index do
   end
 
   def handle_event("save", %{"quote" => quote_params}, socket) do
+    # distance =
+    #   Geocalc.distance_between([50.0663889, -5.7147222], [58.6438889, -3.07])
+
+      from = [String.to_float(quote_params["latitude_from"]), String.to_float(quote_params["longitude_from"])]
+      to = [String.to_float(quote_params["latitude_to"]), String.to_float(quote_params["longitude_to"])]
+      distance = Geocalc.distance_between(from, to)
+      |> Geocalc.to_miles
+
+      # convert to float from integer
+
+
+
+      IO.inspect(distance)
+
+
+
     case Quotes.create_quote(quote_params) do
       {:ok, quote} ->
         notify_parent({:saved, quote})
